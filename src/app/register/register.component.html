@@ -1,0 +1,39 @@
+<div class="wrapper">
+    <div class="container">
+        <div class="login-container">
+            <form class="login-form" [formGroup]="contactForm">
+                <h2 class="login-title"><i class="fas fa-user-circle"></i> Login</h2>
+                <div class="form-control">
+                    <i class="fas fa-user icon"></i>
+                    <input type="text" name="email" [(ngModel)]="signUpObj.email" placeholder="email" id="email" formControlName="emailControl" required>
+                    <div *ngIf="contactForm.get('emailControl')?.invalid && (contactForm.get('emailControl')?.dirty || contactForm.get('emailControl')?.touched)">
+                        <small class ="text-danger" *ngIf="contactForm.get('emailControl')?.hasError('required')">This field is required</small>
+                        <small class ="text-danger" *ngIf="contactForm.get('emailControl')?.hasError('email')">Please enter your email</small>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <i class="fas fa-lock icon"></i>
+                    <input type="password" name="password" [(ngModel)]="signUpObj.password" placeholder="Password" formControlName="passwordControl" id="password" >
+                    <div *ngIf="contactForm.get('passwordControl')?.invalid  && (contactForm.get( 'passwordControl')?.dirty || contactForm.get('passwordControl')?.touched)">
+                        <small class ="text-danger" *ngIf="contactForm.get('passwordControl')?.hasError('required')">This field is required</small>
+                    </div>
+                    <div *ngIf = "!confirmPassword">
+                        <small class ="text-danger" *ngIf="!confirmPassword">The passwords you gave do not match</small>
+                    </div>
+                </div>
+
+                <div class="form-control">
+                    <i class="fas fa-lock icon"></i>
+                    <input type="password" name="password" [(ngModel)]="signUpObj.passwordRepeat" placeholder="Repeat password" formControlName="passwordRepeatControl" id="password" >
+                    <div *ngIf="contactForm.get('passwordRepeatControl')?.invalid && (contactForm.get('passwordRepeatControl')?.dirty || contactForm.get('passwordRepeatControl')?.touched)">
+                        <small class ="text-danger" *ngIf="contactForm.get('passwordRepeatControl')?.hasError('required')">This field is required</small>
+                    </div>
+                    <div *ngIf = "!confirmPassword">
+                        <small class ="text-danger" *ngIf="!confirmPassword">The passwords you gave do not match</small>
+                    </div>
+                </div>
+                <button type="button" (click)="onSignUp()" [disabled]="!contactForm.valid">Sign up</button>
+            </form>
+        </div>
+    </div>
+</div>

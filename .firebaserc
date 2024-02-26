@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "generalandroidapp": {
+      "hosting": {
+        "eshop-angular": [
+          "generalandroidapp"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "generalandroidapp"
+  }
+}

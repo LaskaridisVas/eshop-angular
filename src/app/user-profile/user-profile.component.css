@@ -1,0 +1,142 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+  .wrapper{
+    height:100vh;
+  }
+
+  .navbar{
+    position:absolute;
+    height:50px;
+    width:100%;
+  }
+
+  .middle-container{
+    position:absolute;
+    top:50px;
+    bottom:82px;
+    width:100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  .side_wrapper {
+    width: 100%;
+    max-width: 26rem;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* profile card header */
+  .profile-card_header-container {
+    max-width: 15rem;
+    margin: auto;
+  }
+  
+  .profile-card_header {
+    background: #272727;
+    border-left: 0.625rem solid #97ece1;
+    padding: 1.5em 1.5em 1em;
+    text-align: center;
+  }
+  
+  
+  /* profile picture */
+  .profile-card_header-imgbox {
+    display: block;
+    width: 9.5rem;
+    height: 9.5rem;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto;
+    background: rgba(250, 214, 195, 1);
+    border: 0.375rem solid rgba(250, 214, 195, 1);
+  }
+  
+  .profile-card_header img {
+    max-width: 100%;
+    filter: grayscale(100%);
+  }
+  
+  /* header heading */
+  .profile-card_header h1 {
+    color: #f3f3f3;
+    font-size: 1.5rem;
+    margin-top: 0.8em;
+    font-family: 'Oswald', sans-serif;
+    font-weight: normal;
+    position: relative;
+  }
+
+  .logout button {
+    border: 0ch;
+    background-color: transparent;
+    color: #777;
+    float: none;
+    text-decoration: underline;
+    text-transform: uppercase;
+  }  
+
+  .bg-body-secondary{
+    padding: 20px;
+  }
+
+  .username, 
+  .location, 
+  .submitbtn, 
+  .logoutbtn{
+    padding-bottom: 20px;
+  }
+
+
+  .footer-container{
+    position:absolute;
+    bottom:0;
+    height:82px;
+    width:100%;
+}
+
+.left-footer{
+    display:block;
+}
+
+.right-footer{
+    display:block;
+}
+
+
+.footer-list > li{
+    background-color: transparent;
+    padding: 5px;
+    border: 0px;
+}
+
+  @media screen and (max-width: 640px) {
+
+    .side_wrapper {
+      width: 90vw;
+    }
+
+    .bg-body-secondary{
+      padding: 8px;
+    }
+  
+    .username, 
+    .location, 
+    .submitbtn, 
+    .logoutbtn{
+      padding-bottom: 8px;
+    }
+
+    .left-footer{
+        display:flex;
+        justify-content:center ;
+        width: 100%;
+    }
+    
+    .right-footer{
+    display:none;
+    }
+}

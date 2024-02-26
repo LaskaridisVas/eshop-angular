@@ -1,0 +1,130 @@
+<div class="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Logo</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+               <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Logo</h5>
+              <button type="button" class="btn-close btn-close-black bg-secondary me-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link" href="/cart">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login" *ngIf="!token">Sign in</a>
+                    <a class="nav-link" href="/user" *ngIf="token"><i class="fas fa-user-circle"></i></a>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+    </nav>
+
+    <div class="middle-container">
+        <div class="side_wrapper">
+            <section class="about-dev">
+                <header class="profile-card_header">
+                    <div class="profile-card_header-container">
+                    <div class="profile-card_header-imgbox">
+                        <img src="http://placekitten.com/600/900" alt="Mewy Pawpins" />
+                    </div>
+                    <h1>{{user.userName}}</h1>
+                    </div>
+                </header>
+                <div>
+                    <div class="bg-body-secondary d-flex flex-column">
+                        <div class="username d-flex justify-content-between">
+                            <div><span>Unername:</span></div>
+                            <div><input type="text" placeholder="Enter your username" [(ngModel)]="user.userName"></div>
+                        </div>
+                        <div class="location d-flex justify-content-between ">
+                            <div><span>Location:</span></div>
+                            <div><input type="text" placeholder="Enter your location" [(ngModel)]="user.userLocation"></div>
+                        </div>
+                        <div class="submitbtn d-flex justify-content-center ">
+                            <button class="bg-warning-subtle border border-0 w-25 shadow p-2 bg-body-tertiary rounded" (click)="onClick()">Submit</button>
+                        </div>
+                        <div class="logoutbtn d-flex justify-content-center">
+                            <div class="logout">
+                                <button (click)="logout()">Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+  </div>
+
+  <div class="footer-container" >
+    <div class=" bg-secondary text-white">
+        <div class="d-flex-column">
+            <div class="d-flex justify-content-between">
+                <div class="left-footer">
+                    <ul class="footer-list list-group list-group-horizontal">
+                        <li class="list-group-item">
+                            <a href="https://www.facebook.com/ab.vassilopoulos.sa" >
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/facebook.svg" alt="Facebook" loading="lazy">
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a  href="https://www.instagram.com/abvassilopoulos/" >
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/instagram.svg" alt="Instagram" loading="lazy">
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a  href="http://www.youtube.com/user/ABVassilopoulosTV" >
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/youtube.svg" alt="Youtube" loading="lazy">
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a  href="https://www.linkedin.com/company/ab-vassilopoulos" >
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/linkedin.svg" alt="LinkedIn" loading="lazy">
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a  href="https://twitter.com/abvassilopoulos" >
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/twitter.svg" alt="Twitter" loading="lazy">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right-footer">
+                    <ul class="footer-list list-group list-group-horizontal">
+                        <li class="list-group-item">
+                            <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/visa.svg" alt="visa" loading="lazy">
+                        </li>
+                        <li class="list-group-item">
+                            <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/amex.svg" alt="amex" loading="lazy">
+                        </li>
+                        <li class="list-group-item">
+                            <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/diner-club.svg" alt="Diners club" loading="lazy">
+                        </li>
+                        <li class="list-group-item">
+                            <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/mastercard.svg" alt="mastercard" loading="lazy">
+                        </li>
+                        <li class="list-group-item">
+                            <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/maestro.svg" alt="maestro" loading="lazy">
+                        </li>
+                        <li class="list-group-item">
+                            <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/discover.svg" alt="discover" loading="lazy">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center p-2">
+                <small>Copyright © 2022 All rights reserved. Delhaize Group.</small>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+</div>
