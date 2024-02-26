@@ -1,0 +1,78 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+  .wrapper{
+    height:100%; 
+  }
+  
+  .navbar{
+      position:absolute;
+      height:50px;
+      width:100%;
+  }
+  
+  .middle-container{
+      position:absolute;
+      top:50px;
+      bottom:82px;
+      width:100%; 
+  }
+  
+  .left {
+   
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  }
+
+  .right {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    
+  }
+
+  .container {
+    display: flex;
+    height: 100%;
+    align-items: stretch;
+}
+
+.footer-container{
+    position:absolute;
+    bottom:0;
+    height:82px;
+    width:100%;
+}  
+
+.left-footer{
+  display:block;
+}
+
+.right-footer{
+  display:block;
+}
+
+.footer-list > li{
+    background-color: transparent;
+    padding: 5px;
+    border: 0px;
+}
+
+@media screen and (max-width: 640px) {
+  .left-footer{
+      display:flex;
+      justify-content:center ;
+      width: 100%;
+  }
+  
+  .right-footer{
+  display:none;
+  }
+  
+}
+
+@media screen and (max-width: 450px) {
+  .left > img{
+    width:150px;
+  }
+}

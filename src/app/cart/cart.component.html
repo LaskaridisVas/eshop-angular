@@ -1,0 +1,163 @@
+<div class="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Logo</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+               <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Logo</h5>
+              <button type="button" class="btn-close btn-close-black bg-secondary" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+
+                <div class="d-flex justify-content-center align-items-center" (keydown.enter)="search()">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" name="search" placeholder="Search" [(ngModel)]="searchText" >
+                        <button class="btn btn-primary" type="button">
+                            <a class="nav-link" [routerLink]="['/searchResults', searchText]">Search</a>
+                        </button>
+                    </form>
+                </div>
+
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link" href="/cart">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login" *ngIf="!token">Sign in</a>
+                    <a class="nav-link" href="/user" *ngIf="token"><i class="fas fa-user-circle"></i></a>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+    <div class="middle-container">
+        <div class="cart-container"> 
+            <div class="basket">
+                <div class="basket-labels">
+                    <ul>
+                        <li class="item item-heading">Item</li>
+                        <li class="price">Price</li>
+                        <li class="quantity">Quantity</li>
+                        <li class="subtotal">Subtotal</li>
+                    </ul>
+                </div>
+                <div *ngIf="productsInCartList.length > 0">
+                    <div class="basket-product" *ngFor="let item of productsInCartList">
+                        <div class="item">
+                            <div class="product-image">
+                                <img src={{item.image}} alt={{item.name}} class="product-frame">
+                            </div>
+                            <div class="product-details">
+                                <p>{{item.name}}</p>
+                            </div>
+                        </div>
+                        <div class="price">{{item.price}}</div>
+                        <div class="quantity">
+                            <input type="number" [(ngModel)]="item.quantity"  min="1" class="quantity-field" >
+                        </div>
+                        <div class="subtotal">{{item.price*item.quantity| number:'1.2-2'}}</div>
+                        <div class="remove">
+                            <button (click)="removeFromProductFromCart(item)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="aside">
+                <div class="summary">
+                    <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+                    <div class="summary-subtotal">
+                        <div class="subtotal-title">Subtotal</div>
+                        <div class="subtotal-value final-value" id="basket-subtotal">{{ calculateTotalCost() | number:'1.2-2'}}</div>
+                    </div>
+                    <div class="summary-delivery">
+                        <select name="delivery-collection" class="summary-delivery-selection">
+                        <option value="0" selected="selected">Select Collection or Delivery</option>
+                        <option value="collection">Collection</option>
+                        <option value="first-class">Delivery</option>
+                        </select>
+                    </div>
+                    <div class="summary-total">
+                        <div class="total-title">Total</div>
+                        <div class="total-value final-value" id="basket-total">{{calculateTotalCost()| number:'1.2-2'}}</div>
+                    </div>
+                    <div class="summary-checkout">
+                        <button class="checkout-cta" (click)="onOrderSubmit()">Submit your order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-container" >
+        <div class=" bg-secondary text-white">
+            <div class="d-flex-column">
+                <div class="d-flex justify-content-between">
+                    <div class="left-footer">
+                        <ul class="footer-list list-group list-group-horizontal">
+                            <li class="list-group-item">
+                                <a href="https://www.facebook.com/ab.vassilopoulos.sa" >
+                                    <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/facebook.svg" alt="Facebook" loading="lazy">
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a  href="https://www.instagram.com/abvassilopoulos/" >
+                                    <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/instagram.svg" alt="Instagram" loading="lazy">
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a  href="http://www.youtube.com/user/ABVassilopoulosTV" >
+                                    <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/youtube.svg" alt="Youtube" loading="lazy">
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a  href="https://www.linkedin.com/company/ab-vassilopoulos" >
+                                    <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/linkedin.svg" alt="LinkedIn" loading="lazy">
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a  href="https://twitter.com/abvassilopoulos" >
+                                    <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/twitter.svg" alt="Twitter" loading="lazy">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="right-footer">
+                        <ul class="footer-list list-group list-group-horizontal">
+                            <li class="list-group-item">
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/visa.svg" alt="visa" loading="lazy">
+                            </li>
+                            <li class="list-group-item">
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/amex.svg" alt="amex" loading="lazy">
+                            </li>
+                            <li class="list-group-item">
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/diner-club.svg" alt="Diners club" loading="lazy">
+                            </li>
+                            <li class="list-group-item">
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/mastercard.svg" alt="mastercard" loading="lazy">
+                            </li>
+                            <li class="list-group-item">
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/maestro.svg" alt="maestro" loading="lazy">
+                            </li>
+                            <li class="list-group-item">
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/discover.svg" alt="discover" loading="lazy">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center p-2">
+                    <small>Copyright © 2022 All rights reserved. Delhaize Group.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+</div>

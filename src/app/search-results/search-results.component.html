@@ -1,0 +1,142 @@
+<div class="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Logo</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+               <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Logo</h5>
+              <button type="button" class="btn-close btn-close-black bg-secondary me-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="d-flex justify-content-center align-items-center" (keydown.enter)="search()">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" name="search" placeholder="Search" [(ngModel)]="searchText" >
+                        <button class="btn btn-primary" type="button">
+                            <a class="nav-link" (click)="search()">Search</a>
+                        </button>
+                    </form>
+                </div>
+
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login" *ngIf="!token">Sign in</a>
+                    <a class="nav-link" href="/user" *ngIf="token"><i class="fas fa-user-circle"></i></a>
+                </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+    </nav>
+    
+    <div class="middle-container d-flex-column justify-content-between" >
+        <h1 class="m-5">Αποτελεσματα για "{{titleText}}"</h1>
+        <div class="product-container row row-cols-3 m-3">
+            <div class="product d-flex-column m-3" style="width: 140px;" *ngFor="let item of searchResultProducts">
+                <div>
+                    <a tabindex="0" [routerLink]="['/product', item.id]">
+                        <img class="object-fit-contain" tabindex="-1" src={{item.image}} alt={{item.name}} loading="lazy" width="140" height="140" >
+                    </a>
+                </div>
+                <div class="product-title m-1">
+                      <a tabindex="-1" [routerLink]="['/product', item.id]" >
+                          <p>{{item.name}}</p>
+    
+                      </a>
+                </div>
+    
+                <div class="d-flex justify-content-between m-1">
+                    <div type="sale" >Τιμή:</div>
+                    <div>
+                        <div type="sale" font-size="16px">€{{item.price}}</div>
+                    </div>
+                </div>
+                <div class="add-product-button m-1">
+                    <button  class="border border-white bg-primary text-white w-100" type="button" target="_self" tabindex="0" style="border-radius: 5px;" (click)="addProductInCart(item)">
+                        <div class="d-flex justify-content-center" >
+                            <div style="width: 25px; height:25px; background-color: rgba(0, 0, 0, 0); margin-right: 5px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" >
+                                    <path fill="#ffffff" fill-rule="evenodd" d="M2 4a1 1 0 0 1 1-1h.44a3 3 0 0 1 2.9 2.27l.2.73H18.5a3 3 0 0 1 2.93 3.65l-1.11 5A3 3 0 0 1 17.4 17H9.56a3 3 0 0 1-2.9-2.27L4.4 5.76A1 1 0 0 0 3.44 5H3a1 1 0 0 1-1-1m7.5 17a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m8 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>  
+                            <div style="margin:2px;">Προσθήκη</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+    <div class="footer-container" >
+        <div class=" bg-secondary text-white">
+            <div class="d-flex-column">
+                <div class="d-flex justify-content-between">
+                    <div class="left-footer">
+                        <ul class="footer-list list-group list-group-horizontal">
+                            <li class="list-group-item">
+                                <a href="https://www.facebook.com/ab.vassilopoulos.sa" >
+                                    <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/facebook.svg" alt="Facebook" loading="lazy">
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a  href="https://www.instagram.com/abvassilopoulos/" >
+                                    <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/instagram.svg" alt="Instagram" loading="lazy">
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a  href="http://www.youtube.com/user/ABVassilopoulosTV" >
+                                    <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/youtube.svg" alt="Youtube" loading="lazy">
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a  href="https://www.linkedin.com/company/ab-vassilopoulos" >
+                                    <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/linkedin.svg" alt="LinkedIn" loading="lazy">
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a  href="https://twitter.com/abvassilopoulos" >
+                                    <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/social-link/twitter.svg" alt="Twitter" loading="lazy">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="right-footer">
+                        <ul class="footer-list list-group list-group-horizontal">
+                            <li class="list-group-item">
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/visa.svg" alt="visa" loading="lazy">
+                            </li>
+                            <li class="list-group-item">
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/amex.svg" alt="amex" loading="lazy">
+                            </li>
+                            <li class="list-group-item">
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/diner-club.svg" alt="Diners club" loading="lazy">
+                            </li>
+                            <li class="list-group-item">
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/mastercard.svg" alt="mastercard" loading="lazy">
+                            </li>
+                            <li class="list-group-item">
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/maestro.svg" alt="maestro" loading="lazy">
+                            </li>
+                            <li class="list-group-item">
+                                <img src="//static.ab.gr/site/binaries/_ht_1652277600000/content/gallery/footer/discover.svg" alt="discover" loading="lazy">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center p-2">
+                    <small>Copyright © 2022 All rights reserved. Delhaize Group.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+</div>
+    
